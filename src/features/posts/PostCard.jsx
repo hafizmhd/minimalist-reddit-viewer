@@ -1,5 +1,6 @@
 import timeAgo from '../../utils/timeAgo';
 import { Link } from 'react-router';
+import './PostCard.css';
 
 const PostCard = (props) => {
   const { post } = props;

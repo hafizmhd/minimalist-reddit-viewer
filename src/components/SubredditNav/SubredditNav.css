@@ -1,0 +1,98 @@
+/* ===== Subreddit Navigation ===== */
+
+/* --- Desktop: sidebar --- */
+.subreddit-nav {
+  width: 220px;
+  min-width: 220px;
+  background-color: var(--bg-secondary);
+  border-right: 1px solid var(--border-color);
+  padding: 0.75rem 0;
+  overflow-y: auto;
+  max-height: calc(100vh - 52px); /* subtract header height */
+  position: sticky;
+  top: 0;
+}
+
+.subreddit-nav ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-item {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.nav-item:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.nav-item.active {
+  background-color: var(--bg-active);
+  color: var(--text-primary);
+  border-left: 3px solid var(--accent);
+}
+
+/* --- Mobile dropdown toggle button --- */
+.dropdown-toggle {
+  display: none; /* hidden on desktop */
+}
+
+/* --- Mobile: dropdown --- */
+@media (max-width: 767px) {
+  .subreddit-nav {
+    display: none;
+    position: fixed;
+    top: 90px; /* below header + toggle bar */
+    left: 0;
+    right: 0;
+    width: 100%;
+    min-width: unset;
+    max-height: 60vh;
+    z-index: 100;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .subreddit-nav.open {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dropdown-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.625rem 1rem;
+    background-color: var(--bg-secondary);
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    border-radius: 0;
+    color: var(--text-primary);
+    font-size: 0.875rem;
+  }
+
+  .dropdown-toggle:hover {
+    background-color: var(--bg-hover);
+  }
+
+  .dropdown-toggle .active-sub {
+    font-weight: 600;
+    color: var(--accent-hover);
+  }
+
+  .dropdown-toggle .toggle-arrow {
+    margin-left: 0.5rem;
+    font-size: 0.7rem;
+    transition: transform 0.2s;
+  }
+
+  .dropdown-toggle .toggle-arrow.open {
+    transform: rotate(180deg);
+  }
+}
