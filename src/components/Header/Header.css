@@ -1,0 +1,118 @@
+/* ===== Header & Search Bar Styles ===== */
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--text-primary);
+  flex-shrink: 0;
+  transition: opacity 0.15s ease;
+}
+
+.header-brand:hover {
+  opacity: 0.85;
+}
+
+.header-brand h1 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+/* Rounded search bar form container */
+.search-form {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 380px;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 9999px; /* Smooth rounded corners / pill shape */
+  padding: 0 0.85rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.search-form:hover {
+  border-color: var(--text-muted);
+  background-color: #151516;
+}
+
+.search-form:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(90, 110, 170, 0.25);
+  background-color: var(--bg-primary);
+}
+
+.search-icon {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-right: 0.5rem;
+  user-select: none;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  padding: 0.5rem 0;
+  min-width: 0;
+  font-family: inherit;
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* Clear '✕' button inside the search bar */
+.clear-search-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 0.25rem 0.4rem;
+  margin-left: 0.25rem;
+  border-radius: 50%;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.clear-search-btn:hover {
+  color: var(--text-primary);
+  background-color: var(--bg-hover);
+}
+
+/* Responsive on smaller screens */
+@media (max-width: 640px) {
+  .header-container {
+    gap: 0.75rem;
+  }
+
+  .header-brand h1 {
+    font-size: 1.05rem;
+  }
+
+  .search-form {
+    max-width: 100%;
+  }
+}

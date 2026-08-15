@@ -1,11 +1,10 @@
-import { createAsyncThunk, createSlice, createSelector } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { fetchMockSubredditPosts } from "../../api/mockRedditApi";
 
 const initialState = {
   posts: [],
   isLoading: false,
-  error: null,
-  searchTerm: '',
+  error: null
 };
 
 const fetchPosts = createAsyncThunk(
@@ -60,11 +59,7 @@ const fetchPosts = createAsyncThunk(
 const postsSlice = createSlice({
   name: 'posts',
   initialState,
-  reducers: {
-    setSearchTerm: (state, action) => {
-      state.searchTerm = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchPosts.pending, (state) => {
@@ -86,13 +81,9 @@ const postsSlice = createSlice({
   }
 });
 
-const selectFilteredPosts = createSelector(
-  [
-    (state) => state.posts.posts,
-    (state) => state.posts.searchTerm
-  ],
-  (posts, searchTerm) => posts.filter(post => post.title.toLowerCase().includes(searchTerm.toLowerCase()))
-);
+const selectPosts = (state) => {
+  return state.posts.posts;
+}
 
 const selectIsLoading = (state) => {
   return state.posts.isLoading;
@@ -104,7 +95,7 @@ const selectError = (state) => {
 
 export const { setSearchTerm } = postsSlice.actions;
 export {
-  selectFilteredPosts,
+  selectPosts,
   fetchPosts,
   selectError,
   selectIsLoading
