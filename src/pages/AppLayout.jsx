@@ -5,9 +5,9 @@ import SubredditNav from "../components/SubredditNav/SubredditNav";
 const AppLayout = () => {
   return (
     <>
-      <div className="app-header">
+      <header className="app-header">
         <Header />
-      </div>
+      </header>
       <div className="app-layout">
         <SubredditNav />
         <main className="main-content">

@@ -1,5 +1,7 @@
+import { Link } from "react-router";
+
 const Header = () => {
-  return <h1>Reddit Client</h1>;
+  return <Link to="/">Reddit Client</Link>;
 };
 
 export default Header

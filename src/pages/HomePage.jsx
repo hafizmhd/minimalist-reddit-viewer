@@ -14,13 +14,17 @@ const HomePage = () => {
 
   useEffect(() => {
     // Fetch data from reddit API everytime subredditName changes.
-    dispatch(fetchPosts(subredditName));
+    const promise = dispatch(fetchPosts(subredditName));
+
+    return () => {
+      promise.abort();
+    }
   }, [subredditName, dispatch]);
 
   if (isLoading) {
     return <p>Posts is loading...</p>
   } else if (error) {
-    return <p>Failed fetching the data</p>
+    return <p>{error}</p>
   } else {
     return (
       <div>
